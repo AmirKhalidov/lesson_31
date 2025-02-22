@@ -66,7 +66,7 @@ const users = [
     },
 ];
 
-uniqueUsers(users);
+// uniqueUsers(users);
 
 // TASK 3
 const noRepeatString = function (str) {
