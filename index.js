@@ -14,16 +14,59 @@ function properSpelling(arr) {
 
 // TASK 2
 const uniqueUsers = function (arr) {
-    const uniquesArray = [];
+    const allIds = [];
+    const uniqueIds = [];
+    const repeatedIndices = [];
 
-    for (const element of arr) {
-        !uniquesArray.includes(element) ? uniquesArray.push(element) : '';
+    for (const [index, obj] of arr.entries()) {
+        allIds.push([obj.id, index]);
     }
 
-    return uniquesArray;
+    for (const elem of allIds) {
+        !uniqueIds.includes(elem[0])
+            ? uniqueIds.push(elem[0])
+            : repeatedIndices.push(elem[1]);
+    }
+
+    for (let i = repeatedIndices.length - 1; i >= 0; i -= 1) {
+        arr.splice(repeatedIndices[i], 1);
+    }
+
+    console.log(allIds);
+    console.log(uniqueIds);
+    console.log(repeatedIndices);
+    console.log(arr)
 };
 
-// uniqueUsers([23, 453, 65, 234, 234, 45, 23]);
+const users = [
+    {
+        id: 12,
+        name: 'Jane',
+        age: 24,
+    },
+    {
+        id: 12,
+        name: 'Jim',
+        age: 34,
+    },
+    {
+        id: 13,
+        name: 'Pat',
+        age: 23,
+    },
+    {
+        id: 14,
+        name: 'Harry',
+        age: 43,
+    },
+    {
+        id: 12,
+        name: 'Conan',
+        age: 32,
+    },
+];
+
+uniqueUsers(users);
 
 // TASK 3
 const noRepeatString = function (str) {
